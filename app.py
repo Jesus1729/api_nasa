@@ -77,7 +77,7 @@ elif option in ["Imagen del Día", "Buscar Imagen por Fecha", "Asteroides Cercan
     if option == "Imagen del Día":
         apod_data = img_de_hoy(api_key)
         if apod_data:
-            st.image(apod_data['url'], caption=apod_data['title'], use_column_width=True)
+            st.image(apod_data['url'], caption=apod_data['title'], use_container_width=True)
             st.write(apod_data['explanation'])
 
     elif option == "Buscar Imagen por Fecha":
@@ -88,7 +88,7 @@ elif option in ["Imagen del Día", "Buscar Imagen por Fecha", "Asteroides Cercan
         if response.status_code == 200:
             data = response.json()
             if 'url' in data:
-                st.image(data['url'], caption=data['title'], use_column_width=True)
+                st.image(data['url'], caption=data['title'], use_container_width=True)
                 st.write(data['explanation'])
             else:
                 st.write("No se encontró imagen para esa fecha.")
@@ -114,4 +114,4 @@ elif option in ["Imagen del Día", "Buscar Imagen por Fecha", "Asteroides Cercan
         data = fotos_mars_rover(api_key, sol)
         if data:
             for photo in data['photos']:
-                st.image(photo['img_src'], caption=f"Rover Curiosity - Sol {sol}", use_column_width=True)
+                st.image(photo['img_src'], caption=f"Rover Curiosity - Sol {sol}", use_container_width=True)
